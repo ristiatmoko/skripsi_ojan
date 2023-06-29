@@ -15,9 +15,12 @@ class DashboardProductController extends Controller
      */
     public function index()
     {
+
 //        return Product::all();
         return view('dashboard.products.index', [
-            'products' => Product::latest()->filter(\request(['search']))->paginate(10)
+//            'products' => Product::latest()->filter(\request(['search']))->paginate(10)
+            'products' => Product::latest()->filter(\request(['search']))->paginate(500),
+
         ]);
     }
 
@@ -40,7 +43,8 @@ class DashboardProductController extends Controller
             'product_name' => 'required|max:255',
             'product_slug' => 'required|unique:products',
             'category_id' => 'required',
-            'product_stock' => 'required'
+            'product_stock' => 'required',
+            'expired_date' => 'required|date_format:Y-m-d'
         ]);
 
         $validatedData['user_id'] = auth()->user()->id;
@@ -88,7 +92,9 @@ class DashboardProductController extends Controller
         $rules = [
             'product_name' => 'required|max:255',
             'category_id' => 'required',
-            'product_stock' => 'required'
+            'product_stock' => 'required',
+            'expired_date' => 'required'
+
         ];
 
         if ($request->product_slug  != $product->product_slug) {
@@ -119,11 +125,11 @@ class DashboardProductController extends Controller
         return response()->json(['product_slug' => $product_slug]);
     }
 
-    public function delete($id)
-    {
-        $data =  Product::find($id);
-        $data->delete();
-
-        return redirect('/dashboard/product')->with('success', 'New product has been deleted!');
-    }
+//    public function delete($id)
+//    {
+//        $data =  Product::find($id);
+//        $data->delete();
+//
+//        return redirect('/dashboard/product')->with('success', 'New product has been deleted!');
+//    }
 }

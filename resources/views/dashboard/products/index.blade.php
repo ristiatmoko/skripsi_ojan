@@ -62,7 +62,7 @@
                                         <tr>
                                             <th>No</th>
                                             <th>ID Obat</th>
-                                            <th>Nama Obat</th>
+                                            <th style="width: 20%">Nama Obat</th>
                                             <th>Kategori Obat</th>
                                             <th>Jumlah</th>
                                             <th>Tanggal Kadaluarsa</th>
@@ -75,9 +75,22 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $product['unique_id'] }}</td>
                                                 <td>{{ $product['product_name'] }}</td>
-                                                <td>{{ $product->category->category_name }}</td>
+                                                <td>{{ $product->category->category_name}}</td>
+{{--                                                <td>{{ $product->category->category_name ?? '' }}</td> <!-- digunakan jika kondisi  null -->--}}
                                                 <td>{{ $product['product_stock'] }}</td>
-                                                <td class="bg-danger text-white">31-08-2020</td>
+
+                                                @php
+                                                    $different = \Carbon\Carbon::now()->diffInDays($product->expired_date);
+                                                @endphp
+
+                                                @if($different >= 7)
+                                                    <td class="bg-danger text-white text-center">{{ $product->expired_date }}</td>
+                                                @elseif($different >= 3)
+                                                    <td class="bg-warning text-white text-center">{{ $product->expired_date }}</td>
+                                                @else
+                                                    <td class="bg-info text-white text-center">{{ $product->expired_date }}</td>
+                                                @endif
+
                                                 <td>
                                                     <a href="/dashboard/product/{{ $product->id }}/edit" class="btn btn-outline-info">Ubah</a>
 {{--                                                    <a href="/dashboard/product/delete/{{ $product->id }}" class="btn btn-outline-danger" onclick="return confirm('are you sure?')">Hapus</a>--}}

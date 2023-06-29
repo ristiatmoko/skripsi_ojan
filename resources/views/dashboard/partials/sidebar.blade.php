@@ -14,21 +14,21 @@
                 <img src="{{ asset('dashboard_assets/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">{{ auth()->user()->name }}</a>
+{{--                <a href="#" class="d-block">{{ auth()->user()->name }}</a>--}}
             </div>
         </div>
 
         <!-- SidebarSearch Form -->
-        <div class="form-inline">
-            <div class="input-group" data-widget="sidebar-search">
-                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-                <div class="input-group-append">
-                    <button class="btn btn-sidebar">
-                        <i class="fas fa-search fa-fw"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
+{{--        <div class="form-inline">--}}
+{{--            <div class="input-group" data-widget="sidebar-search">--}}
+{{--                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">--}}
+{{--                <div class="input-group-append">--}}
+{{--                    <button class="btn btn-sidebar">--}}
+{{--                        <i class="fas fa-search fa-fw"></i>--}}
+{{--                    </button>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
@@ -53,7 +53,6 @@
                     </a>
                 </li>
                 </li>
-                @can('admin')
                 <li class="nav-item">
                     <a href="/dashboard/category" class="nav-link">
                         <i class="nav-icon fas fa-table"></i>
@@ -62,22 +61,32 @@
                         </p>
                     </a>
                 </li>
-                @endcan
                 <li class="nav-item">
-                    <a href="/dashboard/category" class="nav-link">
+                    <a href="/dashboard/laporan" class="nav-link">
                         <i class="nav-icon fas fa-table"></i>
                         <p>
                             Laporan
                         </p>
                     </a>
                 </li>
-                <li class="nav-header">EXAMPLES</li>
+{{--                @can('admin')--}}
+                <li class="nav-header">ADMIN</li>
+                <li class="nav-item">
+                    <a href="/dashboard/user" class="nav-link">
+                        <i class="nav-icon fas fa-table"></i>
+                        <p>
+                            Admin
+                        </p>
+                    </a>
+                </li>
+{{--                @endcan--}}
                 <li class="nav-item">
                     <form action="/logout" method="post">
                         @csrf
                         <button type="submit" class="nav-link btn-danger text-white">Logout</button>
                     </form>
                 </li>
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->

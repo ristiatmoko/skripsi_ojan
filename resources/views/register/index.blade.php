@@ -24,15 +24,15 @@
                                     </div>
                                     @enderror
                                 </div>
-                                <div class="form-floating">
-                                    <label for="username">Username</label>
-                                    <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" placeholder="Username" name="username" required value="{{ old('username') }}">
-                                    @error('username')
-                                    <div class="invalid-feedback">
-                                        {{ $message }}
-                                    </div>
-                                    @enderror
-                                </div>
+{{--                                <div class="form-floating">--}}
+{{--                                    <label for="username">Username</label>--}}
+{{--                                    <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" placeholder="Username" name="username" required value="{{ old('username') }}">--}}
+{{--                                    @error('username')--}}
+{{--                                    <div class="invalid-feedback">--}}
+{{--                                        {{ $message }}--}}
+{{--                                    </div>--}}
+{{--                                    @enderror--}}
+{{--                                </div>--}}
                                 <div class="form-floating">
                                     <label for="email">Email</label>
                                     <input type="email" class="form-control @error('username') is-invalid @enderror" id="email" placeholder="Email" name="email" required value="{{ old('email') }}">
@@ -51,7 +51,7 @@
                                     </div>
                                     @enderror
                                 </div>
-                                <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
+                                <button class="w-100 btn btn-lg btn-primary" type="submit">Register</button>
                                 <small>Already register? <a href="/login">Login Now</a></small>
                             </form>
                         </main>

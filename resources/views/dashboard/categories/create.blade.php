@@ -15,7 +15,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Tambah Obat</h1>
+                            <h1>Tambah Kategori Obat</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -46,57 +46,32 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form action="/dashboard/product" method="post">
+                            <form action="/dashboard/category" method="post">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
-{{--                                    <div class="form-group">--}}
-{{--                                        <label>Kode Obat</label>--}}
-{{--                                        <input type="password" disabled="disabled"  class="form-control @error('username') is-invalid @enderror" id="password" placeholder="Password" name="password" required>--}}
-{{--                                    </div>--}}
                                     <div class="form-group">
-                                        <label for="product_name">Nama Obat</label>
-                                        <input type="text" class="form-control @error('product_name') is-invalid @enderror" id="product_name" placeholder="Nama Obat" name="product_name" value="{{ old('product_name') }}">
-                                        @error('product_name')
+                                        <label for="category_name">Nama Kategori Obat</label>
+                                        <input type="text" class="form-control @error('category_name') is-invalid @enderror" id="category_name" placeholder="Nama Obat" name="category_name" value="{{ old('category_name') }}">
+                                        @error('category_name')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
                                         @enderror
                                     </div>
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="product_slug">Slug</label>
-                                        <input type="text" class="form-control @error('product_slug') is-invalid @enderror" id="product_slug" placeholder="Slug" name="product_slug" value="{{ old('product_slug') }}">
-                                        @error('product_slug')
+                                        <label for="category_slug">Slug</label>
+                                        <input type="text" class="form-control @error('category_slug') is-invalid @enderror" id="category_slug" placeholder="Slug" name="category_slug" value="{{ old('category_slug') }}">
+                                        @error('category_slug')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                         @enderror
                                     </div>
 
-                                </div>
-                                <!-- /.col -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="category">Kategori Obat</label>
-                                        <select class="form-control select2" style="width: 100%;" name="category_id">
-                                            @foreach($categories as $category)
-                                                @if(old('category_id') == $category->id)
-                                                    <option value="{{ $category->id }}" selected>{{ $category->category_name }}</option>
-                                                @else
-                                                    <option value="{{ $category->id }}">{{ $category->category_name }}</option>
-                                                @endif
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="product_stock">Stok Obat</label>
-                                        <input type="number" class="form-control @error('product_stock') is-invalid @enderror" id="product_stock" placeholder="Stock" name="product_stock" value="{{ old('product_stock') }}">
-                                        @error('product_stock')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                        @enderror
-                                    </div>
                                 </div>
                                 <!-- /.col -->
                             </div>
@@ -125,27 +100,15 @@
         <!-- /.content-wrapper -->
 
         <script>
-            // $(document).ready(function () {
-            //     $('#myTable').DataTable();
-            // });
-            //
-            const product_name = document.querySelector('#product_name');
-            const product_slug = document.querySelector('#product_slug');
 
-            product_name.addEventListener('change', function () {
-                fetch('/dashboard/product/checkSlug?product_name=' + product_name.value)
+            const category_name = document.querySelector('#category_name');
+            const category_slug = document.querySelector('#category_slug');
+
+            category_name.addEventListener('change', function () {
+                fetch('/dashboard/category/checkSlug?category_name=' + category_name.value)
                     .then(response => response.json())
-                    .then(data => product_slug.value = data.product_slug)
+                    .then(data => category_slug.value = data.category_slug)
             });
-
-                {{--$('#product_name').change(function(e) {--}}
-                {{--    $.get('{{ url('check_slug') }}',--}}
-                {{--        { 'product_name': $(this).val() },--}}
-                {{--        function( data ) {--}}
-                {{--            $('#product_slug').val(data.product_slug);--}}
-                {{--        }--}}
-                {{--    );--}}
-                {{--});--}}
 
         </script>
 

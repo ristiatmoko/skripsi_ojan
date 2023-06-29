@@ -40,7 +40,7 @@
                                         <input type="password" class="form-control" id="password" placeholder="Password" name="password" required>
                                     </div>
                                     <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
-                                    <small>Not register? <a href="/register">Register Now</a></small>
+{{--                                    <small>Not register? <a href="/register">Register Now</a></small>--}}
                                 </form>
                             </main>
                         </div>

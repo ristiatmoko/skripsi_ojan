@@ -15,7 +15,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Tambah Obat</h1>
+                            <h1>Registrasi Admin</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -46,8 +46,9 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form action="/dashboard/product" method="post">
+                            <form action="/dashboard/user" method="post">
                             @csrf
+{{--                            @method('PUT')--}}
                             <div class="row">
                                 <div class="col-md-6">
 {{--                                    <div class="form-group">--}}
@@ -55,52 +56,30 @@
 {{--                                        <input type="password" disabled="disabled"  class="form-control @error('username') is-invalid @enderror" id="password" placeholder="Password" name="password" required>--}}
 {{--                                    </div>--}}
                                     <div class="form-group">
-                                        <label for="product_name">Nama Obat</label>
-                                        <input type="text" class="form-control @error('product_name') is-invalid @enderror" id="product_name" placeholder="Nama Obat" name="product_name" value="{{ old('product_name') }}">
-                                        @error('product_name')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="product_slug">Slug</label>
-                                        <input type="text" class="form-control @error('product_slug') is-invalid @enderror" id="product_slug" placeholder="Slug" name="product_slug" value="{{ old('product_slug') }}"  readonly>
-                                        @error('product_slug')
+                                        <label for="name">Nama</label>
+                                        <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Nama" name="name" required value="{{ old('name') }}">
+                                        @error('name')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="category">Kategori Obat</label>
-                                        <select class="form-control select2" style="width: 100%;" name="category_id">
-                                            @foreach($categories as $category)
-                                                @if(old('category_id') == $category->id)
-                                                    <option value="{{ $category->id }}" selected>{{ $category->category_name }}</option>
-                                                @else
-                                                    <option value="{{ $category->id }}">{{ $category->category_name }}</option>
-                                                @endif
-                                            @endforeach
-                                        </select>
+                                        <label for="email">Email</label>
+                                        <input type="email" class="form-control @error('username') is-invalid @enderror" id="email" placeholder="Email" name="email" required value="{{ old('email') }}">
+                                        @error('email')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
                                     </div>
-
                                 </div>
                                 <!-- /.col -->
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="product_stock">Stok Obat</label>
-                                        <input type="number" class="form-control @error('product_stock') is-invalid @enderror" id="product_stock" placeholder="Stock" name="product_stock" value="{{ old('product_stock') }}">
-                                        @error('product_stock')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="expired_date">Tanggal Kedaluwarsa </label>
-                                        <input type="date" class="form-control @error('expired_date') is-invalid @enderror" id="expired_date" placeholder="Stock" name="expired_date" value="{{ old('expired_date') }}">
-                                        @error('expired_date')
+                                        <label for="password"> Password </label>
+                                        <input type="password" class="form-control @error('username') is-invalid @enderror" id="password" placeholder="Password" name="password" required>
+                                        @error('password')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>

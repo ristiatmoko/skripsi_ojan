@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\LaporanController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardProductController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LoginController;
@@ -38,18 +40,34 @@ Route::get('/login', [LoginController::class, 'index'])->name('login')->middlewa
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/dashboard', function () {
-    return view('dashboard.home');
-})->middleware('auth');
+    $now = \Carbon\Carbon::now();
+    $obat = \Carbon\Carbon::parse('2023-6-31')->format('Y-m-d');
+    $different = $now->diffInDays($obat);
+    if($different >= 7){
+        echo 'lebih dari 7 hari | '.$different;
+    } else if($different >= 3){
+        echo 'lebih dari 3 hari | '.$different;
+    } else {
+        echo 'Masih bisa digunakan | '.$different;
+    }
 
-Route::get('/dashboard/product/checkSlug', [DashboardProductController::class, 'checkSlug'])->middleware('auth');
-Route::resource('/dashboard/product', DashboardProductController::class)->middleware('auth');
+    return view('dashboard.home');
+});
+
+Route::get('/dashboard/product/checkSlug', [DashboardProductController::class, 'checkSlug']);
+Route::resource('/dashboard/product', DashboardProductController::class);
 
 Route::resource('/dashboard/category', AdminCategoryController::class);
+Route::get('/dashboard/category/checkSlug', [AdminCategoryController::class, 'checkSlug']);
 
+Route::resource('/dashboard/user', UserController::class);
+//Route::put('/dashboard/admin', [AdminController::class, 'store']);
+
+Route::resource('/dashboard/laporan', LaporanController::class);
 
 
 //Route::get('/dashboard/product/delete/{id}', [DashboardProductController::class, 'delete']);

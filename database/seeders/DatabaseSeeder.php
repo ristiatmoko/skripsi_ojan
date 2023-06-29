@@ -15,9 +15,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-         User::factory(2)->create();
-         Product::factory(50)->create();
-         Category::factory(3)->create();
+         User::factory(3)->create();
+         Product::factory(100)->create();
+         Category::factory(5)->create();
+
+         $products = Product::with('category')->get();
+         foreach ($products as $product) {
+             $pattern = substr($product->category->category_name, 0,1) . '-' . sprintf("%06s", $product->id);
+             $product->update(['unique_id' => $pattern]);
+         }
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',

@@ -15,7 +15,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Edit Kategori Obat</h1>
+                            <h1>Edit Admin</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -46,15 +46,29 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form action="/dashboard/category/{{ $category->id }}" method="post">
+                            <form action="/dashboard/user/{{ $user->id }}" method="post">
                                 @method('patch')
                                 @csrf
+                                {{--                            @method('PUT')--}}
                                 <div class="row">
                                     <div class="col-md-6">
+                                        {{--                                    <div class="form-group">--}}
+                                        {{--                                        <label>Kode Obat</label>--}}
+                                        {{--                                        <input type="password" disabled="disabled"  class="form-control @error('username') is-invalid @enderror" id="password" placeholder="Password" name="password" required>--}}
+                                        {{--                                    </div>--}}
                                         <div class="form-group">
-                                            <label for="category_name">Nama Kategori Obat</label>
-                                            <input type="text" class="form-control @error('category_name') is-invalid @enderror" id="category_name" placeholder="Nama Obat" name="category_name" value="{{ old('category_name', $category->category_name) }}">
-                                            @error('category_name')
+                                            <label for="name">Nama</label>
+                                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Nama" name="name" required value="{{ old('name', $user->name) }}">
+                                            @error('name')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input type="email" class="form-control @error('username') is-invalid @enderror" id="email" placeholder="Email" name="email" required value="{{ old('email', $user->email) }}">
+                                            @error('email')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
@@ -64,22 +78,21 @@
                                     <!-- /.col -->
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="category_slug">Slug</label>
-                                            <input type="text" class="form-control @error('category_slug') is-invalid @enderror" id="category_slug" placeholder="Slug" name="category_slug" value="{{ old('category_slug', $category->category_slug) }}">
-                                            @error('category_slug')
+                                            <label for="password"> Password </label>
+                                            <input type="password" class="form-control @error('username') is-invalid @enderror" id="password" placeholder="Password" name="password" required >
+                                            @error('password')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
                                             </div>
                                             @enderror
                                         </div>
-
                                     </div>
                                     <!-- /.col -->
                                 </div>
                                 <!-- /.row -->
                                 <div class="row">
                                     <div class="col-12 col-sm-6">
-                                        <button type="submit" class="btn btn-primary">Tambah</button>
+                                        <button type="submit" class="btn btn-primary">Edit</button>
                                     </div>
                                 </div>
                                 <!-- /.row -->
@@ -101,15 +114,27 @@
         <!-- /.content-wrapper -->
 
         <script>
+            // $(document).ready(function () {
+            //     $('#myTable').DataTable();
+            // });
+            //
+            const product_name = document.querySelector('#product_name');
+            const product_slug = document.querySelector('#product_slug');
 
-            const category_name = document.querySelector('#category_name');
-            const category_slug = document.querySelector('#category_slug');
-
-            category_name.addEventListener('change', function () {
-                fetch('/dashboard/category/checkSlug?category_name=' + category_name.value)
+            product_name.addEventListener('change', function () {
+                fetch('/dashboard/product/checkSlug?product_name=' + product_name.value)
                     .then(response => response.json())
-                    .then(data => category_slug.value = data.category_slug)
+                    .then(data => product_slug.value = data.product_slug)
             });
+
+            {{--$('#product_name').change(function(e) {--}}
+            {{--    $.get('{{ url('check_slug') }}',--}}
+            {{--        { 'product_name': $(this).val() },--}}
+            {{--        function( data ) {--}}
+            {{--            $('#product_slug').val(data.product_slug);--}}
+            {{--        }--}}
+            {{--    );--}}
+            {{--});--}}
 
         </script>
 
