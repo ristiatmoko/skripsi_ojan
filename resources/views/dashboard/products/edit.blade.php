@@ -64,15 +64,15 @@
                                             </div>
                                         @enderror
                                     </div>
-                                    <div class="form-group">
-                                        <label for="product_slug">Slug</label>
-                                        <input type="text" class="form-control @error('product_slug') is-invalid @enderror" id="product_slug" placeholder="Slug" name="product_slug" value="{{ old('product_slug', $product->product_slug) }}">
-                                        @error('product_slug')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                        @enderror
-                                    </div>
+{{--                                    <div class="form-group">--}}
+{{--                                        <label for="product_slug">Slug</label>--}}
+{{--                                        <input type="text" class="form-control @error('product_slug') is-invalid @enderror" id="product_slug" placeholder="Slug" name="product_slug" value="{{ old('product_slug', $product->product_slug) }}">--}}
+{{--                                        @error('product_slug')--}}
+{{--                                        <div class="invalid-feedback">--}}
+{{--                                            {{ $message }}--}}
+{{--                                        </div>--}}
+{{--                                        @enderror--}}
+{{--                                    </div>--}}
                                     <div class="form-group">
                                         <label for="category">Kategori Obat</label>
                                         <select class="form-control select2" style="width: 100%;" name="category_id">
@@ -121,10 +121,10 @@
 
                         </div>
                         <!-- /.card-body -->
-                        <div class="card-footer">
-                            Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
-                            the plugin.
-                        </div>
+{{--                        <div class="card-footer">--}}
+{{--                            Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about--}}
+{{--                            the plugin.--}}
+{{--                        </div>--}}
                     </div>
                     <!-- /.card -->
                 </div>

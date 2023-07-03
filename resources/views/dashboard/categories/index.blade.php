@@ -76,7 +76,7 @@
                                                     <form action="/dashboard/category/{{ $category->id }}" method="post" class="d-inline">
                                                         @method('delete')
                                                         @csrf
-                                                        <button class="btn btn-outline-danger" onclick="return confirm('are you sure?')">Hapus</button>
+                                                        <button class="btn btn-outline-danger" onclick="return confirm('apa kamu yakin?')">Hapus</button>
                                                     </form>
                                                 </td>
                                             </tr>

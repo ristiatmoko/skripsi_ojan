@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    use HasFactory, Sluggable;
+    use HasFactory;
 
     protected $guarded = ['id'];
 
@@ -17,12 +17,12 @@ class Category extends Model
         return $this->hasMany(Product::class);
     }
 
-    public function sluggable(): array
-    {
-        return [
-            'category_slug' => [
-                'source' => 'category_name'
-            ]
-        ];
-    }
+//    public function sluggable(): array
+//    {
+//        return [
+//            'category_slug' => [
+//                'source' => 'category_name'
+//            ]
+//        ];
+//    }
 }

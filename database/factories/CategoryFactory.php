@@ -18,7 +18,7 @@ class CategoryFactory extends Factory
     {
         return [
             'category_name' => $this->faker->sentence(mt_rand(1,3)),
-            'category_slug' => $this->faker->slug()
+//            'category_slug' => $this->faker->slug()
         ];
     }
 }

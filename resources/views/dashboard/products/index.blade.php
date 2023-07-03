@@ -80,15 +80,17 @@
                                                 <td>{{ $product['product_stock'] }}</td>
 
                                                 @php
-                                                    $different = \Carbon\Carbon::now()->diffInDays($product->expired_date);
+                                                    $now = \Carbon\Carbon::now();
+                                                    $obat = \Carbon\Carbon::parse($product->expired_date)->format('Y-m-d');
+                                                    $different = $now->diffInDays($obat);
                                                 @endphp
 
-                                                @if($different >= 7)
-                                                    <td class="bg-danger text-white text-center">{{ $product->expired_date }}</td>
-                                                @elseif($different >= 3)
+                                                @if($different <= 7 AND $different > 0 AND $now->format('Y-m-d') < $obat)
                                                     <td class="bg-warning text-white text-center">{{ $product->expired_date }}</td>
+                                                @elseif($now->format('Y-m-d') >= $obat)
+                                                    <td class="bg-danger text-white text-center">{{ $product->expired_date }}</td>
                                                 @else
-                                                    <td class="bg-info text-white text-center">{{ $product->expired_date }}</td>
+                                                    <td class="bg-success text-white text-center">{{ $product->expired_date }}</td>
                                                 @endif
 
                                                 <td>
@@ -104,6 +106,11 @@
                                         @endforeach
                                         </tbody>
                                     </table>
+                                        <hr>
+                                    <h6>Keterangan: </h6>
+                                        <button type="button" class="btn btn-danger">Expired</button>
+                                        <button type="button" class="btn btn-warning">Hampir Expired</button>
+                                        <button type="button" class="btn btn-success">Masih Bisa Digunakan</button>
 {{--                                    <div class="d-flex justify-content-sm-start mt-2">--}}
 {{--                                        {{ $products->links() }}--}}
 {{--                                    </div>--}}

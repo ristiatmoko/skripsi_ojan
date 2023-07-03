@@ -44,19 +44,21 @@ Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/dashboard', function () {
-    $now = \Carbon\Carbon::now();
-    $obat = \Carbon\Carbon::parse('2023-6-31')->format('Y-m-d');
-    $different = $now->diffInDays($obat);
-    if($different >= 7){
-        echo 'lebih dari 7 hari | '.$different;
-    } else if($different >= 3){
-        echo 'lebih dari 3 hari | '.$different;
-    } else {
-        echo 'Masih bisa digunakan | '.$different;
-    }
+//    $now = \Carbon\Carbon::now();
+//    $obat = \Carbon\Carbon::parse('2023-7-1')->format('Y-m-d');
+//    $different = $now->diffInDays($obat);
+//    if($different >= 7 ){
+//        echo 'Expired | '.$different;
+//    } else if($different <= 7){
+//        echo 'Peringatan | '.$different;
+//    } else {
+//        echo 'Masih bisa digunakan | '.$different;
+//    }
 
-    return view('dashboard.home');
-});
+    return view('dashboard.home', [
+        'users' => \App\Models\User::all()
+    ]);
+})->middleware('auth');
 
 Route::get('/dashboard/product/checkSlug', [DashboardProductController::class, 'checkSlug']);
 Route::resource('/dashboard/product', DashboardProductController::class);

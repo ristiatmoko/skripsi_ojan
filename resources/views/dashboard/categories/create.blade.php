@@ -61,18 +61,18 @@
                                     </div>
                                 </div>
                                 <!-- /.col -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="category_slug">Slug</label>
-                                        <input type="text" class="form-control @error('category_slug') is-invalid @enderror" id="category_slug" placeholder="Slug" name="category_slug" value="{{ old('category_slug') }}">
-                                        @error('category_slug')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                        @enderror
-                                    </div>
+{{--                                <div class="col-md-6">--}}
+{{--                                    <div class="form-group">--}}
+{{--                                        <label for="category_slug">Slug</label>--}}
+{{--                                        <input type="text" class="form-control @error('category_slug') is-invalid @enderror" id="category_slug" placeholder="Slug" name="category_slug" value="{{ old('category_slug') }}">--}}
+{{--                                        @error('category_slug')--}}
+{{--                                        <div class="invalid-feedback">--}}
+{{--                                            {{ $message }}--}}
+{{--                                        </div>--}}
+{{--                                        @enderror--}}
+{{--                                    </div>--}}
 
-                                </div>
+{{--                                </div>--}}
                                 <!-- /.col -->
                             </div>
                             <!-- /.row -->
@@ -86,10 +86,10 @@
 
                         </div>
                         <!-- /.card-body -->
-                        <div class="card-footer">
-                            Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about
-                            the plugin.
-                        </div>
+{{--                        <div class="card-footer">--}}
+{{--                            Visit <a href="https://select2.github.io/">Select2 documentation</a> for more examples and information about--}}
+{{--                            the plugin.--}}
+{{--                        </div>--}}
                     </div>
                     <!-- /.card -->
                 </div>
@@ -99,18 +99,18 @@
         </div>
         <!-- /.content-wrapper -->
 
-        <script>
+{{--        <script>--}}
 
-            const category_name = document.querySelector('#category_name');
-            const category_slug = document.querySelector('#category_slug');
+{{--            const category_name = document.querySelector('#category_name');--}}
+{{--            const category_slug = document.querySelector('#category_slug');--}}
 
-            category_name.addEventListener('change', function () {
-                fetch('/dashboard/category/checkSlug?category_name=' + category_name.value)
-                    .then(response => response.json())
-                    .then(data => category_slug.value = data.category_slug)
-            });
+{{--            category_name.addEventListener('change', function () {--}}
+{{--                fetch('/dashboard/category/checkSlug?category_name=' + category_name.value)--}}
+{{--                    .then(response => response.json())--}}
+{{--                    .then(data => category_slug.value = data.category_slug)--}}
+{{--            });--}}
 
-        </script>
+{{--        </script>--}}
 
 
         @include('partials.footer')

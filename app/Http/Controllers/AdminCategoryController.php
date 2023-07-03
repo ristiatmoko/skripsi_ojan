@@ -39,7 +39,7 @@ class AdminCategoryController extends Controller
     {
         $validatedData = $request->validate([
             'category_name' => 'required|max:255',
-            'category_slug' => 'required|unique:categories'
+//            'category_slug' => 'required|unique:categories'
         ]);
 
 //        $validatedData['user_id'] = auth()->user()->id;
@@ -59,7 +59,7 @@ class AdminCategoryController extends Controller
 //        }
 
         Category::query()->create($validatedData);
-        return redirect('/dashboard/category')->with('success', 'New category has been added!');
+        return redirect('/dashboard/category')->with('success', 'Kategori baru telah ditambakan!');
     }
 
     /**
@@ -88,12 +88,12 @@ class AdminCategoryController extends Controller
     {
         $rules = [
             'category_name' => 'required|max:255',
-            'category_slug' => 'required|unique:categories'
+//            'category_slug' => 'required|unique:categories'
         ];
 
-        if ($request->category_slug  != $category->category_slug) {
-            $rules['category_slug'] = 'required|unique:categories';
-        }
+//        if ($request->category_slug  != $category->category_slug) {
+//            $rules['category_slug'] = 'required|unique:categories';
+//        }
 
         $validatedData = $request->validate($rules);
 
@@ -101,7 +101,7 @@ class AdminCategoryController extends Controller
 
         Category::where('id', $category->id)
             ->update($validatedData);
-        return redirect('/dashboard/category')->with('success', 'New category has been updated!');
+        return redirect('/dashboard/category')->with('success', 'Ketegori baru telah diperbaharui!');
     }
 
     /**
@@ -110,14 +110,14 @@ class AdminCategoryController extends Controller
     public function destroy(Category $category)
     {
         Category::destroy($category->id);
-        return redirect('/dashboard/category')->with('success', 'New category has been deleted!');
+        return redirect('/dashboard/category')->with('success', 'Kategori baru telah dihapus!');
 
     }
 
-    public function checkSlug(Request $request)
-    {
-
-        $category_slug = SlugService::createSlug(Category::class, 'category_slug', $request->category_name);
-        return response()->json(['category_slug' => $category_slug]);
-    }
+//    public function checkSlug(Request $request)
+//    {
+//
+//        $category_slug = SlugService::createSlug(Category::class, 'category_slug', $request->category_name);
+//        return response()->json(['category_slug' => $category_slug]);
+//    }
 }

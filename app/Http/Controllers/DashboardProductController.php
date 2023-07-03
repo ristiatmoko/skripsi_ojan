@@ -41,7 +41,7 @@ class DashboardProductController extends Controller
     {
         $validatedData = $request->validate([
             'product_name' => 'required|max:255',
-            'product_slug' => 'required|unique:products',
+//            'product_slug' => 'required|unique:products',
             'category_id' => 'required',
             'product_stock' => 'required',
             'expired_date' => 'required|date_format:Y-m-d'
@@ -60,9 +60,9 @@ class DashboardProductController extends Controller
                     sprintf("%05s", $product->id)
             ]);
         } else {
-            return redirect('/dashboard/product')->with('error', 'Failed to add product!');
+            return redirect('/dashboard/product')->with('error', 'Gagal memperbaharui produk!');
         }
-        return redirect('/dashboard/product')->with('success', 'New product has been added!');
+        return redirect('/dashboard/product')->with('success', 'Obat baru telah ditambakan!');
     }
 
     /**
@@ -107,7 +107,7 @@ class DashboardProductController extends Controller
 
         Product::where('id', $product->id)
                 ->update($validatedData);
-        return redirect('/dashboard/product')->with('success', 'New product has been updated!');
+        return redirect('/dashboard/product')->with('success', 'Obat baru telah diperbaharui!');
     }
 
     /**
@@ -119,11 +119,11 @@ class DashboardProductController extends Controller
         return redirect('/dashboard/product')->with('success', 'New product has been deleted!');
     }
 
-    public function checkSlug(Request $request)
-    {
-        $product_slug = SlugService::createSlug(Product::class, 'product_slug', $request->product_name);
-        return response()->json(['product_slug' => $product_slug]);
-    }
+//    public function checkSlug(Request $request)
+//    {
+//        $product_slug = SlugService::createSlug(Product::class, 'product_slug', $request->product_name);
+//        return response()->json(['product_slug' => $product_slug]);
+//    }
 
 //    public function delete($id)
 //    {

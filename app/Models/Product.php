@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
-    use HasFactory, Sluggable;
+    use HasFactory;
 
     protected $guarded = ['id'];
 
@@ -30,12 +30,12 @@ class Product extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function sluggable(): array
-    {
-        return [
-            'product_slug' => [
-                'source' => 'product_name'
-            ]
-        ];
-    }
+//    public function sluggable(): array
+//    {
+//        return [
+//            'product_slug' => [
+//                'source' => 'product_name'
+//            ]
+//        ];
+//    }
 }

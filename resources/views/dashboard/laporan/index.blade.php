@@ -64,15 +64,28 @@
                                                 <td>{{ $product->category->category_name}}</td>
 {{--                                                <td>{{ $product->category->category_name ?? '' }}</td> <!-- digunakan jika kondisi  null -->--}}
                                                 <td>{{ $product['product_stock'] }}</td>
-                                                <td class="bg-danger text-white">{{ $product->expired_date }}</td>
+                                                @php
+                                                    $now = \Carbon\Carbon::now();
+                                                    $obat = \Carbon\Carbon::parse($product->expired_date)->format('Y-m-d');
+                                                    $different = $now->diffInDays($obat);
+                                                @endphp
 
+                                                @if($different <= 7 AND $different > 0 AND $now->format('Y-m-d') < $obat)
+                                                    <td class="bg-warning text-white text-center">{{ $product->expired_date }}</td>
+                                                @elseif($now->format('Y-m-d') > $obat)
+                                                    <td class="bg-danger text-white text-center">{{ $product->expired_date }}</td>
+                                                @else
+                                                    <td class="bg-success text-white text-center">{{ $product->expired_date }}</td>
+                                                @endif
                                             </tr>
                                         @endforeach
                                         </tbody>
                                     </table>
-{{--                                    <div class="d-flex justify-content-sm-start mt-2">--}}
-{{--                                        {{ $products->links() }}--}}
-{{--                                    </div>--}}
+                                        <hr>
+                                        <h6>Keterangan: </h6>
+                                        <button type="button" class="btn btn-danger">Expired</button>
+                                        <button type="button" class="btn btn-warning">Hampir Expired</button>
+                                        <button type="button" class="btn btn-success">Masih Bisa Digunakan</button>
                                 </div>
                                 <!-- /.card-body -->
                             </div>

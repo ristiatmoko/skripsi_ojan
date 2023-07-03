@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('category_id')->nullable();
             $table->foreignId('user_id');
             $table->string('product_name');
-            $table->string('product_slug')->unique();
+//            $table->string('product_slug')->unique();
             $table->text('product_stock');
             $table->timestamps();
         });
