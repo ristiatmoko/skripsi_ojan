@@ -1,7 +1,7 @@
 <!-- Main Footer -->
 <footer class="main-footer">
     <!-- To the right -->
-    <p class="text-center">Puskesmas Desa Rejosari @2023</p>
+    <p class="text-center">Puskesmas Rejosari @2023</p>
 
 {{--    <div class="d-none d-sm-inline justify-content-center">--}}
 {{--        <p class="text-center">Center aligned text on all viewport sizes.</p>--}}

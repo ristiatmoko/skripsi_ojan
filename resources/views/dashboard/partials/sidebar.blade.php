@@ -3,7 +3,7 @@
     <!-- Brand Logo -->
     <a class="brand-link">
         <img src="{{ asset('dashboard_assets/dist/img/Logo_Puskesmas.jpg') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">Desa Rejosari</span>
+        <h4 class="brand-text font-weight text-bold">SIPOT</h4><h4>Puskesmas Rejosari</h4>
     </a>
 
     <!-- Sidebar -->

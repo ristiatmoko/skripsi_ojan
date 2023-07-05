@@ -85,4 +85,12 @@ class ProductController extends Controller
             ->get();
         return DataTables::of($data)->make(true);
     }
+
+    public function tentang() {
+        return view('tentang');
+    }
+
+    public function kontak() {
+        return view('kontak');
+    }
 }

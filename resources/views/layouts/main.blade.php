@@ -8,7 +8,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shorcut icon" type="x-icon" href="{{ asset('dashboard_assets/dist/img/logo-puskesmas.png') }}">
-    <title>Puskemas | Desa Rejosari</title>
+    <title>SIPOT Puskemas Rejosari</title>
+
 
     {{--    datatable--}}
     <link href="https://cdn.datatables.net/v/dt/dt-1.13.4/datatables.min.css" rel="stylesheet"/>

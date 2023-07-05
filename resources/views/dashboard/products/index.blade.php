@@ -17,12 +17,7 @@
                         <div class="col-sm-6">
                             <h1>Daftar Obat</h1>
                         </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">DataTables</li>
-                            </ol>
-                        </div>
+
                     </div>
                 </div><!-- /.container-fluid -->
             </section>
@@ -85,7 +80,8 @@
                                                     $different = $now->diffInDays($obat);
                                                 @endphp
 
-                                                @if($different <= 7 AND $different > 0 AND $now->format('Y-m-d') < $obat)
+
+                                                @if($different <= 30 AND $different >= 0 AND $now->format('Y-m-d') < $obat)
                                                     <td class="bg-warning text-white text-center">{{ $product->expired_date }}</td>
                                                 @elseif($now->format('Y-m-d') >= $obat)
                                                     <td class="bg-danger text-white text-center">{{ $product->expired_date }}</td>
@@ -108,8 +104,8 @@
                                     </table>
                                         <hr>
                                     <h6>Keterangan: </h6>
-                                        <button type="button" class="btn btn-danger">Expired</button>
-                                        <button type="button" class="btn btn-warning">Hampir Expired</button>
+                                        <button type="button" class="btn btn-danger">Kedaluwarsa</button>
+                                        <button type="button" class="btn btn-warning">Mendekati Kedaluwarsa</button>
                                         <button type="button" class="btn btn-success">Masih Bisa Digunakan</button>
 {{--                                    <div class="d-flex justify-content-sm-start mt-2">--}}
 {{--                                        {{ $products->links() }}--}}

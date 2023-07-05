@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 
@@ -34,6 +35,10 @@ Route::get('/home', function () {
 });
 
 Route::get('/product', [ProductController::class, 'index']);
+Route::get('/tentang', [ProductController::class, 'tentang']);
+Route::get('/kontak', [ProductController::class, 'kontak']);
+
+
 Route::get('/product/{product:product_slug}', [ProductController::class, 'detail']);
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
@@ -54,6 +59,21 @@ Route::get('/dashboard', function () {
 //    } else {
 //        echo 'Masih bisa digunakan | '.$different;
 //    }
+
+    //    $products = Product::with(['category','user'])
+    //        ->whereHas('user')
+    //        ->get();
+    //
+    //    $ID = 102;
+    //    $category = \App\Models\Category::query()
+    //        ->with(['product' => function($q) use($ID){
+    //            return $q->where('id', $ID);
+    //        }])
+    //        ->has('product')
+    //        ->get();
+    //
+    //    dd($products->toArray(), $category->toArray());
+
 
     return view('dashboard.home', [
         'users' => \App\Models\User::all()

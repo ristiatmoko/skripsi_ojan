@@ -3,7 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Puskemas | Desa Rejosari</title>
+    <link rel="shorcut icon" type="x-icon" href="{{ asset('dashboard_assets/dist/img/logo-puskesmas.png') }}">
+    <title>SIPOT Puskemas Rejosari</title>
 
 {{--    datatable print--}}
 

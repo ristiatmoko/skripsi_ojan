@@ -54,7 +54,7 @@
                                             <th style="width: 20%">Nama Obat</th>
                                             <th>Kategori Obat</th>
                                             <th>Jumlah</th>
-                                            <th>Tanggal Kadaluarsa</th>
+                                            <th>Tanggal Kedaluwarsa</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -73,7 +73,7 @@
                                                     $different = $now->diffInDays($obat);
                                                 @endphp
 
-                                                @if($different <= 7 AND $different > 0 AND $now->format('Y-m-d') < $obat)
+                                                @if($different <= 30 AND $different >= 0 AND $now->format('Y-m-d') < $obat)
                                                     <td class="bg-warning text-white text-center">{{ $product->expired_date }}</td>
                                                 @elseif($now->format('Y-m-d') >= $obat)
                                                     <td class="bg-danger text-white text-center">{{ $product->expired_date }}</td>
@@ -86,8 +86,8 @@
                                     </table>
                                     <hr>
                                     <h6>Keterangan: </h6>
-                                    <button type="button" class="btn btn-danger">Expired</button>
-                                    <button type="button" class="btn btn-warning">Hampir Expired</button>
+                                    <button type="button" class="btn btn-danger">Kedaluwarsa</button>
+                                    <button type="button" class="btn btn-warning">Hampir Kedaluwarsa</button>
                                     <button type="button" class="btn btn-success">Masih Bisa Digunakan</button>
 {{--                                    <div class="d-flex justify-content-sm-start mt-2">--}}
 {{--                                        {{ $products->links() }}--}}
