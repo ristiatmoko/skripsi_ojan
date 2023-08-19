@@ -15,7 +15,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Edit Obat</h1>
+                            <h1>Stock Obat</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -46,8 +46,8 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form action="/dashboard/product/{{ $product->id }}" method="post">
-                            @method('patch')
+                            <form action="{{ route('product.add-stock', ['product' => $product->id]) }}" method="post">
+                            @method('post')
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
@@ -56,52 +56,43 @@
 {{--                                        <input type="password" disabled="disabled"  class="form-control @error('username') is-invalid @enderror" id="password" placeholder="Password" name="password" required>--}}
 {{--                                    </div>--}}
                                     <div class="form-group">
-                                        <label for="product_name">Nama Obat</label>
-                                        <input type="text" class="form-control @error('product_name') is-invalid @enderror" id="product_name" placeholder="Nama Obat" name="product_name" value="{{ old('product_name', $product->product_name) }}">
-                                        @error('product_name')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
-                                    </div>
-{{--                                    <div class="form-group">--}}
-{{--                                        <label for="product_slug">Slug</label>--}}
-{{--                                        <input type="text" class="form-control @error('product_slug') is-invalid @enderror" id="product_slug" placeholder="Slug" name="product_slug" value="{{ old('product_slug', $product->product_slug) }}">--}}
-{{--                                        @error('product_slug')--}}
-{{--                                        <div class="invalid-feedback">--}}
-{{--                                            {{ $message }}--}}
-{{--                                        </div>--}}
-{{--                                        @enderror--}}
-{{--                                    </div>--}}
-                                    <div class="form-group">
-                                        <label for="category">Kategori Obat</label>
-                                        <select class="form-control select2" style="width: 100%;" name="category_id">
-                                            @foreach($categories as $category)
-                                                @if(old('category_id', $product->category_id) == $category->id)
-                                                    <option value="{{ $category->id }}" selected>{{ $category->category_name }}</option>
-                                                @else
-                                                    <option value="{{ $category->id }}">{{ $category->category_name }}</option>
-                                                @endif
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <!-- /.col -->
-                                <div class="col-md-6">
-
-                                    <div class="form-group">
-                                        <label for="product_stock">Stok Obat</label>
-                                        <input disabled type="number" class="form-control @error('product_stock') is-invalid @enderror" id="product_stock" placeholder="Stock" name="product_stock" value="{{ old('product_stock', $product->product_stock) }}">
-                                        @error('product_stock')
+                                        <label for="unique_id">ID Obat</label>
+                                        <input type="text" disabled class="form-control @error('unique_id') is-invalid @enderror" id="unique_id" placeholder="Nama Obat" name="unique_id" value="{{ old('unique_id', $product->unique_id  ) }}">
+                                        @error('unique_id')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label for="expired_date">Tanggal Kedaluwarsa </label>
-                                        <input type="date" class="form-control @error('expired_date') is-invalid @enderror" id="expired_date" placeholder="Stock" name="expired_date" value="{{ old('expired_date', $product->expired_date) }}">
-                                        @error('expired_date')
+                                        <label for="product_name">Nama Obat</label>
+                                        <input type="text" disabled class="form-control @error('product_name') is-invalid @enderror" id="product_name" placeholder="Nama Obat" name="product_name" value="{{ old('product_name', $product->product_name  ) }}">
+                                        @error('product_name')
+                                            <div class="invalid-feedback">
+                                                {{ $message }}
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="stock">Stok Obat</label>
+                                        <input type="number" class="form-control @error('stock') is-invalid @enderror" id="stock" placeholder="Stock" name="stock" value="{{ old('stock') }}">
+                                        @error('stock')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="description">Keterangan</label>
+{{--                                        <select class="form-control select2" style="width: 100%;" name="category_id">--}}
+{{--                                            <option selected>Obat Keluar</option>--}}
+{{--                                            <option value="1">Obat Masuk</option>--}}
+                                        <input type="text" class="form-control @error('description') is-invalid @enderror" id="description" placeholder="Keterangan" name="description" value="{{ old('description') }}">
+                                        @error('description')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
@@ -113,7 +104,7 @@
                             <!-- /.row -->
                             <div class="row">
                                 <div class="col-12 col-sm-6">
-                                    <button type="submit" class="btn btn-primary">Ubah</button>
+                                    <button type="submit" class="btn btn-primary">Tambah</button>
                                 </div>
                             </div>
                             <!-- /.row -->
@@ -139,14 +130,14 @@
             //     $('#myTable').DataTable();
             // });
             //
-            const product_name = document.querySelector('#product_name');
-            const product_slug = document.querySelector('#product_slug');
-
-            product_name.addEventListener('change', function () {
-                fetch('/dashboard/product/checkSlug?product_name=' + product_name.value)
-                    .then(response => response.json())
-                    .then(data => product_slug.value = data.product_slug)
-            });
+            // const product_name = document.querySelector('#product_name');
+            // const product_slug = document.querySelector('#product_slug');
+            //
+            // product_name.addEventListener('change', function () {
+            //     fetch('/dashboard/product/checkSlug?product_name=' + product_name.value)
+            //         .then(response => response.json())
+            //         .then(data => product_slug.value = data.product_slug)
+            // });
 
                 {{--$('#product_name').change(function(e) {--}}
                 {{--    $.get('{{ url('check_slug') }}',--}}

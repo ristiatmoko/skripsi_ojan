@@ -31,21 +31,24 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|max:255',
-            'email' => 'required|email:dns|unique:users',
-            'password' => 'required|min:3|max:255|',
+            $validatedData = $request->validate([
+                'name' => 'required|max:255',
+                'email' => 'required|email:dns|unique:users',
+                'password' => 'required|min:3|max:255|',
 
-        ]);
+            ]);
 
-//        $validatedData['password'] = bcrypt($validatedData['password']);
-        $validatedData['password'] = Hash::make($validatedData['password']);
+            dd('$validatedData');
 
-        User::create($validatedData);
 
-//        $request->session()->flash('success', 'Registration successful! Please Login');
+    //        $validatedData['password'] = bcrypt($validatedData['password']);
+            $validatedData['password'] = Hash::make($validatedData['password']);
 
-        return redirect('/dashboard/user')->with('success', 'Registrasi berhasil!');
+            User::create($validatedData);
+
+    //        $request->session()->flash('success', 'Registration successful! Please Login');
+
+            return redirect('/dashboard/user')->with('success', 'Registrasi berhasil!');
     }
 
     /**

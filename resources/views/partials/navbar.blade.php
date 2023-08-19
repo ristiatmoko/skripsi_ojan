@@ -49,28 +49,28 @@
         </div>
 
         <!-- Right navbar links -->
-{{--        <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">--}}
-{{--            @auth--}}
-{{--                <li class="nav-item dropdown">--}}
-{{--                    <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">{{ auth()->user()->name }}</a>--}}
-{{--                    <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">--}}
-{{--                        <li><a href="/dashboard " class="dropdown-item">My Dashboard </a></li>--}}
-{{--                        <li>--}}
-{{--                            <hr class="dropdown-divider"></li>--}}
-{{--                        <li>--}}
-{{--                            <form action="/logout" method="post">--}}
-{{--                                @csrf--}}
-{{--                                <button type="submit" class="dropdown-item">Logout</button>--}}
-{{--                            </form>--}}
-{{--                        </li>--}}
-{{--                    </ul>--}}
-{{--                </li>--}}
-{{--            @else--}}
-{{--                <li class="nav-item">--}}
-{{--                    <a href="/login" class="nav-link"><i class="bi bi-box-arrow-in-right"></i> Login</a>--}}
-{{--                </li>--}}
-{{--            @endauth--}}
-{{--        </ul>--}}
+        <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+            @auth
+                <li class="nav-item dropdown">
+                    <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">{{ auth()->user()->name }}</a>
+                    <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+                        <li><a href="/dashboard " class="dropdown-item">My Dashboard </a></li>
+                        <li>
+                            <hr class="dropdown-divider"></li>
+                        <li>
+                            <form action="/logout" method="post">
+                                @csrf
+                                <button type="submit" class="dropdown-item">Logout</button>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+            @else
+                <li class="nav-item">
+                    <a href="/login" class="nav-link"><i class="bi bi-box-arrow-in-right"></i> Login</a>
+                </li>
+            @endauth
+        </ul>
     </div>
 </nav>
 <!-- /.navbar -->

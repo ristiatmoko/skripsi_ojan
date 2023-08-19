@@ -14,7 +14,7 @@
                 <img src="{{ asset('dashboard_assets/dist/img/admin.jpg') }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a class="d-block">{{ auth()->user()->name }}</a>
+{{--                <a class="d-block">{{ auth()->user()->name }}</a>--}}
             </div>
         </div>
 

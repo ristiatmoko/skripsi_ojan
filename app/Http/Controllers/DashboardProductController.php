@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\ProductStock;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 use function GuzzleHttp\Promise\all;
@@ -20,6 +21,7 @@ class DashboardProductController extends Controller
         return view('dashboard.products.index', [
 //            'products' => Product::latest()->filter(\request(['search']))->paginate(10)
             'products' => Product::latest()->filter(\request(['search']))->paginate(500),
+            'stocks' => ProductStock::latest()->paginate(500),
 
         ]);
     }
@@ -43,7 +45,7 @@ class DashboardProductController extends Controller
             'product_name' => 'required|max:255',
 //            'product_slug' => 'required|unique:products',
             'category_id' => 'required',
-            'product_stock' => 'required',
+//            'product_stock' => 'required',
             'expired_date' => 'required|date_format:Y-m-d'
         ]);
 
@@ -117,6 +119,43 @@ class DashboardProductController extends Controller
     {
         Product::destroy($product->id);
         return redirect('/dashboard/product')->with('success', 'New product has been deleted!');
+    }
+
+    public function productStock(Product $product)
+    {
+//        dd($product);
+
+        return view('dashboard.products.stock', [
+            'product' => $product
+        ]);
+//        dd($product);
+
+    }
+
+    public function productStockAction(Product $product, Request $request)
+    {
+        ProductStock::query()->create([
+            'amount' => (int) $request->stock,
+            'description' => $request->description,
+            'product_id' => $product->id
+        ]);
+
+//        $product->product_stocks()->create([
+//            'amount' => 3,
+//            'description' => 'Lewat Relasi'
+//        ]);
+
+        $allStocks = ProductStock::query()->where('product_id', $product->id)
+            ->sum('amount');
+
+//        $product->product_stock = $allStocks;
+//        $product->save();
+
+        Product::query()->where('id', $product->id)
+            ->update(['product_stock' => $allStocks]);
+
+        return redirect('/dashboard/product')->with('success', 'Stock baru telah ditambakan!');
+
     }
 
 //    public function checkSlug(Request $request)

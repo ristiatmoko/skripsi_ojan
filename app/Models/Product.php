@@ -30,6 +30,11 @@ class Product extends Model
         return $this->belongsTo(User::class, 'user_id','id');
     }
 
+    public function product_stocks()
+    {
+        return $this->hasMany(ProductStock::class);
+    }
+
 //    public function sluggable(): array
 //    {
 //        return [

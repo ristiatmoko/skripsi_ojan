@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Category;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,12 +19,13 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-            'product_name' => $this->faker->sentence(mt_rand(1,3)),
+//            'unique_id' => $this->faker->randomDigit(5),
+            'user_id' => User::factory(),
+            'product_name' => $this->faker->sentence(3, true),
 //            'product_slug' => $this->faker->slug(),
-            'product_stock' => $this->faker->randomDigit(2),
+            'product_stock' => $this->faker->randomNumber($nbDigits = NULL, $strict = false),
             'expired_date' => $this->faker->date(),
-            'user_id' => mt_rand(1,2),
-            'category_id' => mt_rand(1,3)
+            'category_id' => Category::factory()
         ];
     }
 }

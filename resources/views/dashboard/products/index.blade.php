@@ -30,6 +30,14 @@
 
                             <div class="card">
                                 <div class="card-header">
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        {{--                                <button type="button" class="btn btn-tool" data-card-widget="remove">--}}
+                                        {{--                                    <i class="fas fa-times"></i>--}}
+                                        {{--                                </button>--}}
+                                    </div>
                                     <a href="/dashboard/product/create" class="btn btn-primary">Tambah</a>
 
 {{--                                    <form action="/product" class="form-inline my-2 my-lg-0 float-lg-right mb-3">--}}
@@ -90,6 +98,7 @@
                                                 @endif
 
                                                 <td>
+                                                    <a href="/dashboard/product/stock/{{ $product->id }}" class="btn btn-outline-primary">Stock</a>
                                                     <a href="/dashboard/product/{{ $product->id }}/edit" class="btn btn-outline-info">Ubah</a>
 {{--                                                    <a href="/dashboard/product/delete/{{ $product->id }}" class="btn btn-outline-danger" onclick="return confirm('are you sure?')">Hapus</a>--}}
                                                     <form action="/dashboard/product/{{ $product->id }}" method="post" class="d-inline">
@@ -114,6 +123,56 @@
                                 <!-- /.card-body -->
                             </div>
                             <!-- /.card -->
+
+                            <div class="card">
+                                <div class="card-header">
+                                    <div class="card-tools">
+                                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                    </div>
+                                    <h4>Obat Keluar</h4>
+                                </div>
+                                <!-- /.card-header -->
+
+
+
+                                <div class="card-body">
+
+                                    @if(session()->has('success'))
+                                        <div class="alert alert-success" role="alert">
+                                            {{ session('success') }}
+                                        </div>
+                                    @endif
+                                    <table id="myTable2" class="table table-bordered table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>ID Obat</th>
+                                            <th style="width: 20%">Nama Obat</th>
+                                            <th>Jumlah</th>
+                                            <th>Keterangan</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($stocks as $stock)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $stock->product->unique_id}}</td>
+                                                <td>{{ $stock->product->product_name}}</td>
+                                                <td>{{ $stock['amount'] }}</td>
+                                                <td>{{ $stock['description'] }}</td>
+
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                                <!-- /.card-body -->
+                            </div>
+
+
                         </div>
                         <!-- /.col -->
                     </div>
@@ -125,6 +184,8 @@
         </div>
         <!-- /.content-wrapper -->
 
+
+
         @include('partials.footer')
     </div>
     <!-- ./wrapper -->
@@ -135,6 +196,10 @@
     <script>
         $(document).ready(function () {
             $('#myTable').DataTable();
+        });
+
+        $(document).ready(function () {
+            $('#myTable2').DataTable();
         });
     </script>
 @endsection

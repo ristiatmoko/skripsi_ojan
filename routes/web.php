@@ -82,6 +82,10 @@ Route::get('/dashboard', function () {
 
 Route::get('/dashboard/product/checkSlug', [DashboardProductController::class, 'checkSlug']);
 Route::resource('/dashboard/product', DashboardProductController::class);
+Route::get('/dashboard/product/stock/{product}', [DashboardProductController::class, 'productStock']);
+Route::post('/dashboard/product/stock/{product}/action', [DashboardProductController::class, 'productStockAction'])->name('product.add-stock');
+
+Route::get('product/stocks', [LaporanController::class, 'records'])->name('product/stocks');
 
 Route::resource('/dashboard/category', AdminCategoryController::class);
 Route::get('/dashboard/category/checkSlug', [AdminCategoryController::class, 'checkSlug']);

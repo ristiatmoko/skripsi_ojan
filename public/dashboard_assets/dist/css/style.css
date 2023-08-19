@@ -1,3 +1,10 @@
+@media print
+{
+    html, body { height: 50px; }
+    .dt-print-table, .dt-print-table thead, .dt-print-table th, .dt-print-table tr {border: 5px none !important;}
+}
+
+
 .form-signin {
     width: 100%;
     max-width: 330px;
