@@ -7,6 +7,7 @@ use App\Models\Product;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 
+
 class AdminCategoryController extends Controller
 {
     /**
@@ -20,7 +21,7 @@ class AdminCategoryController extends Controller
 
 //        $this->authorize('admin');
         return view('dashboard.categories.index', [
-            'categories' => Category::all()
+            'categories' => Category::latest()->paginate(500),
         ]);
     }
 

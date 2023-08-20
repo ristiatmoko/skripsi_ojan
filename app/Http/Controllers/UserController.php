@@ -38,7 +38,7 @@ class UserController extends Controller
 
             ]);
 
-            dd('$validatedData');
+//            dd('$validatedData');
 
 
     //        $validatedData['password'] = bcrypt($validatedData['password']);

@@ -34,18 +34,18 @@
 
 
                                 <div class="card-body">
-                                    <h3>Laporan Obat Keluar</h3>
+                                    <h3>Laporan Obat Masuk dan Keluar</h3>
                                     <hr>
 
                                     <form class="mb-2" method="get" action="/dashboard/laporan">
                                         <div class="input-group">
                                             <select class="form-select" aria-label="Default select example" name="date_filter">
-                                                <option value="">All Dates</option>
-                                                <option value="today" @if(request('date_filter') === 'today') selected @endif>Today</option>
-                                                <option  value="yesterday" @if(request('date_filter') === 'yesterday') selected @endif>Yesterday</option>
-                                                <option  value="this-week" @if(request('date_filter') === 'this-week') selected @endif>This Week</option>
-                                                <option  value="this-month" @if(request('date_filter') === 'this-month') selected @endif>This Month</option>
-                                                <option  value="this-year" @if(request('date_filter') === 'this-year') selected @endif>This Year</option>
+                                                <option value="">Semua Hari</option>
+                                                <option value="today" @if(request('date_filter') === 'today') selected @endif>Hari Ini</option>
+                                                <option  value="yesterday" @if(request('date_filter') === 'yesterday') selected @endif>Kemarin</option>
+                                                <option  value="this-week" @if(request('date_filter') === 'this-week') selected @endif>Minggu Ini</option>
+                                                <option  value="this-month" @if(request('date_filter') === 'this-month') selected @endif>Bulan Ini</option>
+                                                <option  value="this-year" @if(request('date_filter') === 'this-year') selected @endif>Tahun Ini</option>
                                             </select>
                                             <button type="submit" class="btn btn-primary">Filter</button>
                                         </div>
@@ -67,7 +67,6 @@
                                             <th>Nama Obat</th>
                                             <th>Keterangan</th>
                                             <th>Jumlah</th>
-                                            <th>Total</th>
                                             <th>Tanggal</th>
                                         </tr>
                                         </thead>
@@ -78,7 +77,7 @@
                                                 <td>{{ $stock->product->unique_id}}</td>
                                                 <td>{{ $stock->product->product_name}}</td>
                                                 <td>{{ $stock->description }} </td>
-                                                <td>{{ $stock->product->product_stock}}</td>
+{{--                                                <td>{{ $stock->product->product_stock}}</td>--}}
                                                 <td>{{ $stock->amount}}</td>
 {{--                                                <td>{{ $stock->amount }}</td>--}}
                                                 <td>{{ $stock->created_at->format('Y-m-d') }}</td>
@@ -215,7 +214,7 @@
                         logo: 'https://seeklogo.com/images/P/puskesmas-logo-D5EA09221D-seeklogo.com.png',
                         logoPosition: 'center',
                         logoStyle: 'max-width:50px',
-                        title: '<h3 class="text-center">Puskesmas Desa Rejosari</h3> <br> <h4>Tanda Tangan:</h4>'
+                        title: '<h3 class="text-center">SIPOT Puskesmas Rejosari</h3> <br> <h4>Tanda Tangan:</h4>'
                     },
 
                 }]

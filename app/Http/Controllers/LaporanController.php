@@ -16,7 +16,7 @@ class LaporanController extends Controller
     {
 //        $query = ProductStock::query()->with('product');
         $query = ProductStock::query()->latest();
-        $query2 = Product::query();
+        $query2 = Product::query()->latest();
 
         $date = $request->date_filter;
 

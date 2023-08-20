@@ -94,7 +94,7 @@ class DashboardProductController extends Controller
         $rules = [
             'product_name' => 'required|max:255',
             'category_id' => 'required',
-            'product_stock' => 'required',
+//            'product_stock' => 'required',
             'expired_date' => 'required'
 
         ];

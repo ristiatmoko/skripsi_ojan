@@ -38,7 +38,9 @@
                                         {{--                                    <i class="fas fa-times"></i>--}}
                                         {{--                                </button>--}}
                                     </div>
+                                    @can('admin')
                                     <a href="/dashboard/product/create" class="btn btn-primary">Tambah</a>
+                                    @endcan
 
 {{--                                    <form action="/product" class="form-inline my-2 my-lg-0 float-lg-right mb-3">--}}
 {{--                                        <input class="form-control mr-sm-2" type="search" placeholder="Search"--}}
@@ -131,7 +133,7 @@
                                             <i class="fas fa-minus"></i>
                                         </button>
                                     </div>
-                                    <h4>Obat Keluar</h4>
+                                    <h4>Obat Masuk dan Keluar</h4>
                                 </div>
                                 <!-- /.card-header -->
 

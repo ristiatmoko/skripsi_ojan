@@ -30,7 +30,9 @@
 
                             <div class="card">
                                 <div class="card-header">
+                                    @can('admin')
                                     <a href="/dashboard/category/create" class="btn btn-primary">Tambah</a>
+                                    @endcan
 
 {{--                                    <form action="/product" class="form-inline my-2 my-lg-0 float-lg-right mb-3">--}}
 {{--                                        <input class="form-control mr-sm-2" type="search" placeholder="Search"--}}

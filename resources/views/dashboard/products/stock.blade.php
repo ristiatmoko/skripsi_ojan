@@ -104,7 +104,7 @@
                             <!-- /.row -->
                             <div class="row">
                                 <div class="col-12 col-sm-6">
-                                    <button type="submit" class="btn btn-primary">Tambah</button>
+                                    <button type="submit" class="btn btn-primary">Simpan</button>
                                 </div>
                             </div>
                             <!-- /.row -->
