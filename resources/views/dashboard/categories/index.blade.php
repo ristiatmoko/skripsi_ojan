@@ -70,11 +70,11 @@
                                                 <td>
                                                     <a href="/dashboard/category/{{ $category->id }}/edit" class="btn btn-outline-info">Ubah</a>
 {{--                                                    <a href="/dashboard/product/delete/{{ $category->id }}" class="btn btn-outline-danger" onclick="return confirm('are you sure?')">Hapus</a>--}}
-                                                    <form action="/dashboard/category/{{ $category->id }}" method="post" class="d-inline">
-                                                        @method('delete')
-                                                        @csrf
-                                                        <button class="btn btn-outline-danger" onclick="return confirm('apa kamu yakin?')">Hapus</button>
-                                                    </form>
+{{--                                                    <form action="/dashboard/category/{{ $category->id }}" method="post" class="d-inline">--}}
+{{--                                                        @method('delete')--}}
+{{--                                                        @csrf--}}
+{{--                                                        <button class="btn btn-outline-danger" onclick="return confirm('apa kamu yakin?')">Hapus</button>--}}
+{{--                                                    </form>--}}
                                                 </td>
                                             </tr>
                                         @endforeach

@@ -4,6 +4,22 @@
     .dt-print-table, .dt-print-table thead, .dt-print-table th, .dt-print-table tr {border: 5px none !important;}
 }
 
+.bg-image {
+    /* The image used */
+    /*background-image: url("photographer.jpg");*/
+
+    /* Add the blur effect */
+    filter: blur(3px);
+    -webkit-filter: blur(3px);
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
 
 .form-signin {
     width: 100%;

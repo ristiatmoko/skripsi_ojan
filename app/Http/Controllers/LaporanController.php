@@ -43,6 +43,14 @@ class LaporanController extends Controller
 
         }
 
+        if($request->type_stock){
+            if($request->type_stock == 'add'){
+                $query->where('amount','>',0);
+            } else {
+                $query->where('amount','<',0);
+            }
+        }
+
         $stocks = $query->get();
         $products = $query2->get();
 

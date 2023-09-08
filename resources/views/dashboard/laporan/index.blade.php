@@ -47,6 +47,11 @@
                                                 <option  value="this-month" @if(request('date_filter') === 'this-month') selected @endif>Bulan Ini</option>
                                                 <option  value="this-year" @if(request('date_filter') === 'this-year') selected @endif>Tahun Ini</option>
                                             </select>
+                                            <select class="form-select" aria-label="Default select example" name="type_stock">
+                                                <option value="" selected>Jenis Stock</option>
+                                                <option value="add" @if(request('type_stock') === 'add') selected @endif>Masuk</option>
+                                                <option  value="reduce" @if(request('type_stock') === 'reduce') selected @endif>Keluar</option>
+                                            </select>
                                             <button type="submit" class="btn btn-primary">Filter</button>
                                         </div>
                                     </form>
@@ -214,7 +219,7 @@
                         logo: 'https://seeklogo.com/images/P/puskesmas-logo-D5EA09221D-seeklogo.com.png',
                         logoPosition: 'center',
                         logoStyle: 'max-width:50px',
-                        title: '<h3 class="text-center">SIPOT Puskesmas Rejosari</h3> <br> <h4>Tanda Tangan:</h4>'
+                        title: '<h3 class="text-center">SIPOT Puskesmas Rejosari</h3> <br> <h4>Tanda Tangan: {{ auth()->user()->name }}</h4>'
                     },
 
                 }]

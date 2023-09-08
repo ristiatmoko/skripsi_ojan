@@ -18,7 +18,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="m-0">Dashboard</h1>
+                            <h1 class="m-0">Home</h1>
                         </div><!-- /.col -->
 
 
@@ -33,7 +33,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="jumbotron">
-                                <h1 class="display-4 text-bold">SIPOT</h1>
+                                <h1 class="display-4 text-dark">SIPOT</h1>
                                 <hr class="my-4">
                                 <p>Sistem Informasi Persediaan Obat Puskesmas Rejosari</p>
                                 <p class="lead">

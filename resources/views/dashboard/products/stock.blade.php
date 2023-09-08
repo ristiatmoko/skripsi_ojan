@@ -15,7 +15,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Stock Obat</h1>
+                            <h1>Stock Obat Keluar</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
@@ -46,7 +46,7 @@
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
-                            <form action="{{ route('product.add-stock', ['product' => $product->id]) }}" method="post">
+                            <form action="{{ route('product.reduce-stock', ['product' => $product->id]) }}" method="post">
                             @method('post')
                             @csrf
                             <div class="row">
@@ -77,8 +77,10 @@
                                 <!-- /.col -->
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="stock">Stok Obat</label>
-                                        <input type="number" class="form-control @error('stock') is-invalid @enderror" id="stock" placeholder="Stock" name="stock" value="{{ old('stock') }}">
+                                        <label for="stock">Obat Keluar</label>
+                                        <input type="number"
+                                               min="1" m    ax="10000000"
+                                               class="form-control @error('stock') is-invalid @enderror" id="stock" placeholder="Stock" name="stock" value="{{ old('stock', 1) }}">
                                         @error('stock')
                                         <div class="invalid-feedback">
                                             {{ $message }}

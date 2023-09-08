@@ -100,14 +100,14 @@
                                                 @endif
 
                                                 <td>
-                                                    <a href="/dashboard/product/stock/{{ $product->id }}" class="btn btn-outline-primary">Stock</a>
+{{--                                                    <a href="/dashboard/product/stock/{{ $product->id }}" class="btn btn-outline-primary">Stock</a>--}}
                                                     <a href="/dashboard/product/{{ $product->id }}/edit" class="btn btn-outline-info">Ubah</a>
 {{--                                                    <a href="/dashboard/product/delete/{{ $product->id }}" class="btn btn-outline-danger" onclick="return confirm('are you sure?')">Hapus</a>--}}
-                                                    <form action="/dashboard/product/{{ $product->id }}" method="post" class="d-inline">
-                                                        @method('delete')
-                                                        @csrf
-                                                        <button class="btn btn-outline-danger" onclick="return confirm('are you sure?')">Hapus</button>
-                                                    </form>
+{{--                                                    <form action="/dashboard/product/{{ $product->id }}" method="post" class="d-inline">--}}
+{{--                                                        @method('delete')--}}
+{{--                                                        @csrf--}}
+{{--                                                        <button class="btn btn-outline-danger" onclick="return confirm('are you sure?')">Hapus</button>--}}
+{{--                                                    </form>--}}
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -162,7 +162,7 @@
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $stock->product->unique_id}}</td>
                                                 <td>{{ $stock->product->product_name}}</td>
-                                                <td>{{ $stock['amount'] }}</td>
+                                                <td>{{ abs($stock['amount']) }}</td>
                                                 <td>{{ $stock['description'] }}</td>
 
                                             </tr>

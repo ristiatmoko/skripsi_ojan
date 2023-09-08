@@ -25,7 +25,7 @@
 
                             <div class="card">
                                 <div class="card-header">
-                                    <p class="text-justify">Ambitioni dedisse scripsisse iudicaretur. Cras mattis iudicium purus sit amet fermentum. Donec sed odio operae, eu vulputate felis rhoncus. Praeterea iter est quasdam res quas ex communi. At nos hinc posthac, sitientis piros Afros. Petierunt uti sibi concilium totius Galliae in diem certam indicere. Cras mattis iudicium purus sit amet fermentum.</p>
+                                    <p class="text-justify">Kabupaten Temanggung memiliki 25 Puskesmas salah satunya yaitu Puskesmas Rejosari. Puskesmas Rejosari terletak di Dusun Krajan 3 RT 09 RW 4, Desa Rejosari, Kecamatan Pringsurat, Kabupaten Temanggung, tepatnya di Jalan Raya Magelang-Semarang KM 19,7 Rejosari Pringsurat Temanggung. Puskesmas Rejosari didirikan pada Tahun 2016 dan telah diresmikan pada tanggal 11 Januari 2017 dengan wilayah kerja meliputi tujuh Desa yaitu Desa Pringsurat, Desa Kebumen, Desa Soropadan, Desa Kupen, Desa Karangwuni, Desa Gowak, dan Desa Rejosari. Jenis pelayanan yang terdapat di Puskesmas Rejosari meliputi, pemeriksaan umum, KIA&KB, pemeriksaan gigi dan mulut, konsultasi gizi, persalinan, imunisasi, kegawatdaruratan, dan laboratorium.</p>
 {{--                                    <a href="/dashboard/product/create" class="btn btn-outline-primary">Tambah</a>--}}
 
 {{--                                    <form action="/product" class="form-inline my-2 my-lg-0 float-lg-right mb-3">--}}

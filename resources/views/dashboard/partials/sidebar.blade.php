@@ -14,7 +14,7 @@
                 <img src="{{ asset('dashboard_assets/dist/img/admin.jpg') }}" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-{{--                <a class="d-block">{{ auth()->user()->name }}</a>--}}
+                <a class="d-block">{{ auth()->user()->name }}</a>
             </div>
         </div>
 
@@ -52,6 +52,23 @@
                         </p>
                     </a>
                 </li>
+                @can('admin')
+                <li class="nav-item">
+                    <a href="{{ route('product.add-stock-view') }}" class="nav-link">
+                        <i class="nav-icon fas fa-table"></i>
+                        <p>
+                             Obat Masuk
+                        </p>
+                    </a>
+                </li>
+                @endcan
+                <li class="nav-item">
+                    <a href="{{ route('product.reduce-stock-view') }}" class="nav-link">
+                        <i class="nav-icon fas fa-table"></i>
+                        <p>
+                             Obat Keluar
+                        </p>
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a href="/dashboard/category" class="nav-link">

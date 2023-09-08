@@ -88,15 +88,15 @@
                                 </div>
                                 <!-- /.col -->
                                 <div class="col-md-6">
-{{--                                    <div class="form-group">--}}
-{{--                                        <label for="product_stock">Stok Obat</label>--}}
-{{--                                        <input type="number" class="form-control @error('product_stock') is-invalid @enderror" id="product_stock" placeholder="Stock" name="product_stock" value="{{ old('product_stock') }}">--}}
-{{--                                        @error('product_stock')--}}
-{{--                                        <div class="invalid-feedback">--}}
-{{--                                            {{ $message }}--}}
-{{--                                        </div>--}}
-{{--                                        @enderror--}}
-{{--                                    </div>--}}
+                                    <div class="form-group">
+                                        <label for="product_stock">Stok Obat</label>
+                                        <input type="number" class="form-control @error('product_stock') is-invalid @enderror" id="product_stock" placeholder="Stock" name="product_stock" value="{{ old('product_stock') }}">
+                                        @error('product_stock')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                    </div>
                                     <div class="form-group">
                                         <label for="expired_date">Tanggal Kedaluwarsa </label>
                                         <input type="date" class="form-control @error('expired_date') is-invalid @enderror" id="expired_date" placeholder="Stock" name="expired_date" value="{{ old('expired_date') }}">

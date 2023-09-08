@@ -26,6 +26,10 @@ class DashboardProductController extends Controller
         ]);
     }
 
+
+
+
+
     /**
      * Show the form for creating a new resource.
      */
@@ -45,7 +49,7 @@ class DashboardProductController extends Controller
             'product_name' => 'required|max:255',
 //            'product_slug' => 'required|unique:products',
             'category_id' => 'required',
-//            'product_stock' => 'required',
+            'product_stock' => 'required',
             'expired_date' => 'required|date_format:Y-m-d'
         ]);
 
@@ -60,6 +64,12 @@ class DashboardProductController extends Controller
                         0,3)
                     .'-') .
                     sprintf("%05s", $product->id)
+            ]);
+
+            ProductStock::query()->create([
+                'amount' => (int) abs($request->product_stock),
+                'description' => 'Obat Masuk',
+                'product_id' => $product->id
             ]);
         } else {
             return redirect('/dashboard/product')->with('error', 'Gagal memperbaharui produk!');
@@ -121,7 +131,7 @@ class DashboardProductController extends Controller
         return redirect('/dashboard/product')->with('success', 'New product has been deleted!');
     }
 
-    public function productStock(Product $product)
+    public function productStock(Product $product): string
     {
 //        dd($product);
 
@@ -132,31 +142,63 @@ class DashboardProductController extends Controller
 
     }
 
-    public function productStockAction(Product $product, Request $request)
+    public function obatMasuk()
+    {
+        return view('dashboard.products.obat-masuk', [
+                'products' => Product::all()
+            ]
+        );
+    }
+
+    public function productAddStockAction(Request $request)
     {
         ProductStock::query()->create([
-            'amount' => (int) $request->stock,
-            'description' => $request->description,
-            'product_id' => $product->id
+            'amount' => (int) abs($request->stock),
+            'description' => 'Obat Masuk',
+            'product_id' => $request->product_id
         ]);
 
-//        $product->product_stocks()->create([
-//            'amount' => 3,
-//            'description' => 'Lewat Relasi'
-//        ]);
 
-        $allStocks = ProductStock::query()->where('product_id', $product->id)
+        $allStocks = ProductStock::query()->where('product_id', $request->product_id)
             ->sum('amount');
 
-//        $product->product_stock = $allStocks;
-//        $product->save();
-
-        Product::query()->where('id', $product->id)
+        Product::query()->where('id', $request->product_id)
             ->update(['product_stock' => $allStocks]);
 
-        return redirect('/dashboard/product')->with('success', 'Stock baru telah ditambakan!');
-
+        return redirect()
+            ->back()
+            ->with('success', 'Stock baru telah ditambakan!');
     }
+
+    public function obatKeluar()
+    {
+        return view('dashboard.products.obat-keluar', [
+            'products' => Product::all()
+        ]);
+    }
+
+
+    public function productReduceStockAction(Request $request)
+    {
+        ProductStock::query()->create([
+            'amount' => (int) -abs($request->stock),
+            'description' => 'Obat Keluar',
+            'product_id' => $request->product_id
+        ]);
+
+
+        $allStocks = ProductStock::query()->where('product_id', $request->product_id)
+            ->sum('amount');
+
+        Product::query()->where('id', $request->product_id)
+            ->update(['product_stock' => $allStocks]);
+
+        return redirect()
+            ->back()
+            ->with('success', 'Stock telah dikurangi!');
+    }
+
+
 
 //    public function checkSlug(Request $request)
 //    {

@@ -81,15 +81,23 @@ Route::get('/dashboard', function () {
 })->middleware('auth');
 
 Route::get('/dashboard/product/checkSlug', [DashboardProductController::class, 'checkSlug']);
-Route::resource('/dashboard/product', DashboardProductController::class);
 Route::get('/dashboard/product/stock/{product}', [DashboardProductController::class, 'productStock']);
-Route::post('/dashboard/product/stock/{product}/action', [DashboardProductController::class, 'productStockAction'])->name('product.add-stock');
+
+Route::get('/dashboard/product/obat_masuk', [DashboardProductController::class, 'obatMasuk'])->name('product.add-stock-view');
+Route::post('/dashboard/product/obat_masuk/action', [DashboardProductController::class, 'productAddStockAction'])->name('product.add-stock-action');
+
+Route::get('/dashboard/product/obat_keluar', [DashboardProductController::class, 'obatKeluar'])->name('product.reduce-stock-view');
+Route::post('/dashboard/product/obat_keluar/action', [DashboardProductController::class, 'productReduceStockAction'])->name('product.reduce-stock-action');
+
+Route::resource('/dashboard/product', DashboardProductController::class);
 
 Route::get('product/stocks', [LaporanController::class, 'records'])->name('product/stocks');
 
 Route::resource('/dashboard/category', AdminCategoryController::class);
 Route::get('/dashboard/category/checkSlug', [AdminCategoryController::class, 'checkSlug']);
 
+Route::get('/dashboard/user/{user}/active', [UserController::class, 'userActive']);
+Route::get('/dashboard/user/{user}/nonactive', [UserController::class, 'userNonActive']);
 Route::resource('/dashboard/user', UserController::class);
 //Route::put('/dashboard/admin', [AdminController::class, 'store']);
 

@@ -22,6 +22,8 @@ class ProductController extends Controller
         return view('product', [
             'title' => 'Product',
             'products' => Product::latest()->filter(\request(['search']))->paginate(500)
+            
+
 //            'products' => Product::latest()->get()->load('category'), / lazy eager loading
 //            with(['category'])-> / clockwork
 //            'categories' => Category::all()

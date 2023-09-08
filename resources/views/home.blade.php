@@ -30,10 +30,10 @@
                         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
                             <div class="carousel-inner">
                                 <div class="carousel-item active">
-                                    <img src="{{ asset('dashboard_assets/dist/img/2022-06-12.jpg') }}" class="d-block w-100" alt="...">
+                                    <img src="{{ asset('dashboard_assets/dist/img/Pkm Rejosari - Copy.jpg') }}" class="d-block w-100" alt="...">
                                     <div class="carousel-caption d-none d-md-block">
                                         <h1 class="display-1 text-bold">SIPOT</h1>
-                                        <p>Sistem Informasi Persediaan Obat Puskesmas Rejosari</p>
+                                        <h3>Sistem Informasi Persediaan Obat Puskesmas Rejosari</h3>
                                     </div>
                                 </div>
                             </div>

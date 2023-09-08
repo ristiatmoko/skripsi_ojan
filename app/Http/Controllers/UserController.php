@@ -99,4 +99,18 @@ class UserController extends Controller
         User::destroy($user->id);
         return redirect('/dashboard/user')->with('success', 'Admin baru berhasil dihapus!');
     }
+
+    public function userActive(User $user) {
+        User::query()->where('id', $user->id)
+            ->update(['is_active' => 1]);
+        return redirect('/dashboard/user')->with('success', 'Admin telah diaktifkan!');
+
+    }
+
+    public function userNonActive(User $user) {
+        User::query()->where('id', $user->id)
+            ->update(['is_active' => 0]);
+        return redirect('/dashboard/user')->with('success', 'Admin telah dinonaktifkan!');
+
+    }
 }

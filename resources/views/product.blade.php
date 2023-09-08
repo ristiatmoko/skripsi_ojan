@@ -68,7 +68,7 @@
                                                 <td>{{ $product['product_stock'] }}</td>
 
                                                 @php
-                                                    $now = \Carbon\Carbon::now();
+                                                    $now = \Carbon\Carbon::now(); 
                                                     $obat = \Carbon\Carbon::parse($product->expired_date)->format('Y-m-d');
                                                     $different = $now->diffInDays($obat);
                                                 @endphp
